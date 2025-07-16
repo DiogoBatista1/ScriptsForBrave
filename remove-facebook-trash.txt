@@ -1,7 +1,7 @@
-! ----- REMOVE STORIES SECTION (ALL FACEBOOK VERSIONS) -----
+! ========== STORIES SECTION ==========
 ! Desktop (www.facebook.com)
-www.facebook.com##div[data-pagelet="Stories"]
-www.facebook.com##div[aria-label="Stories"]
+facebook.com##div[data-pagelet="Stories"]
+facebook.com##div[aria-label="Stories"]
 
 ! Mobile Web (m.facebook.com)
 m.facebook.com##section[data-sigil="stories-container"]
@@ -16,16 +16,33 @@ facebook.com##a[href*="/stories/create/"]:upward(2)
 ! Remove Empty Space After Removal
 facebook.com##div[data-pagelet="Stories"] + div:style(margin-top: 0 !important)
 
-! ----- REMOVE SUGGESTED REELS/SHORTS -----
-facebook.com##div[role="article"]:has(span:has-text(/Suggested Reels|Reels sugeridos|Shorts for you|Vídeos curtos para você/i))
-facebook.com##div[aria-label="Reels"]:upward(3)
-facebook.com##div[data-pagelet*="VideoFeed"]:has(span:has-text(/Suggested for you|Sugestões para você/i))
 
-! ----- REMOVER TODOS OS "SUGGESTED FOR YOU" -----
+! ========== REELS/SHORTS ==========
+! Suggested Reels/Shorts (All Languages)
+facebook.com##div[role="article"]:has(span:has-text(/Suggested Reels|Reels sugeridos|Shorts for you|Vídeos curtos para você/i)):upward(4)
+facebook.com##div[aria-label*="Reels"]:upward(4)
+facebook.com##div[data-pagelet*="VideoFeed"]:has(span:has-text(/Suggested for you|Sugestões para você/i)):upward(3)
+
+
+! ========== SUGGESTED CONTENT ==========
+! All "Suggested For You" Sections
 facebook.com##div[role="article"]:has(span:has-text(/Suggested for you|Sugestões para você/i)):upward(4)
 facebook.com##div:has(> div > span:has-text(/More like this|Mais conteúdos como este/i)):upward(3)
 
-! ----- REMOVE "PEOPLE YOU MAY KNOW" -----
-facebook.com##div[role="article"]:has(span:has-text(/People You May Know|Pessoas que você talvez conheça|Sugestões para você/i)):upward(4)
+! People You May Know (Global)
+facebook.com##div[role="article"]:has(span:has-text(/People You May Know|Pessoas que você talvez conheça|Gente que tal vez conozcas/i)):upward(4)
 facebook.com##div:has(> div > div > span:has-text(/People You May Know|Pessoas que você talvez conheça/i)):upward(6)
-m.facebook.com##section:has(div[data-sigil*="m-feed-voice-subtitle"]:has-text(/People You May Know/i))
+m.facebook.com##section:has(div[data-sigil*="m-feed-voice-subtitle"]:has-text(/People You May Know/i)):upward(3)
+
+! Suggested Groups/Pages
+facebook.com##[role="article"]:has([href*="/groups/discover"]):upward(4)
+facebook.com##[aria-label="Suggested pages"]:upward(4)
+
+
+! ========== SPONSORED CONTENT ==========
+! Sponsored Posts (Multiple Detection Methods)
+facebook.com##[role="article"]:has(span:has-text(/Sponsored|Patrocinado|Sponsorisé/i)):upward(4)
+facebook.com##[role="article"]:has([href*="/ads/"]):upward(4)
+facebook.com##[data-pagelet*="FeedUnit"]:has(span:has-text(/Promoted|Promovido/i)):upward(3)
+
+
