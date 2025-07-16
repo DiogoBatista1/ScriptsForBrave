@@ -1,60 +1,40 @@
-! ********** CORE REMOVALS **********
-! Stories - All Versions
+! ********** STORIES & REELS **********
+! Remove Stories (All Versions)
 facebook.com##[data-pagelet="Stories"], [aria-label="Stories"]
-m.facebook.com##section[data-sigil="stories-container"], div[data-sigil="m-stories-list"]
+m.facebook.com##section[data-sigil="stories-container"]
 touch.facebook.com##div[data-sigil="stories-tray"]
-facebook.com##a[href*="/stories/create/"]:upward(2)
-facebook.com##div[data-pagelet="Stories"] + div:style(margin-top: 0 !important)
 
-! Reels/Shorts - Global
-facebook.com##[aria-label*="Reel"], [aria-label*="Vídeo curto"], [aria-label*="Short"]:upward(4)
-facebook.com##div[data-pagelet*="Video"]:has(span:has-text(/Reels|Shorts|Vídeos curtos/i)):upward(3)
+! Remove Reels/Shorts (Only Suggested Ones)
+facebook.com##[role="article"]:has(
+    [aria-label*="Reel"],
+    span:has-text(/Suggested Reels|Reels sugeridos/i)
+):upward(4)
+
+! ********** SPONSORED CONTENT **********
+! Sponsored Posts (Precise Targeting)
+facebook.com##[role="article"]:has(
+    span:has-text(/^Sponsored$|^Patrocinado$/i),
+    [href*="/ads/"]
+):upward(4)
+
+! Marketplace & Video Ads
+facebook.com##div[aria-label="Marketplace"] div:has-text(/Sponsored/i)
+facebook.com##[data-pagelet*="Video"]:has(span:has-text(/Promoted/i))
 
 ! ********** SUGGESTED CONTENT **********
-! Posts and Recommendations
-facebook.com##[role="article"]:has(
-    span:has-text(/Suggested for you|Sugestões para você/i),
-    [role=button]:has-text(/Follow|Join|Seguir|Unirse/i)
-):upward(4)
-
-! "More like this" Sections
-facebook.com##div:has(> div > span:has-text(/More like this|Mais conteúdos como este/i)):upward(3)
-
-! Mobile Specific Suggestions
-m.facebook.com##[data-mcomponent="MScreen"] > div.m > div:has-text(Suggested for you)
-
-! ********** SOCIAL RECOMMENDATIONS **********
-! People You May Know
+! People/Groups Suggestions
 facebook.com##[role="article"]:has(
     [href="/friends/"],
-    span:has-text(/People You May Know|Pessoas que você talvez conheça/i)
-):upward(4)
-
-! Groups and Pages
-facebook.com##[role="article"]:has(
     [href*="/groups/discover"],
-    [aria-label="Suggested pages"]
+    span:has-text(/^People You May Know$|^Pessoas que você talvez conheça$/i)
 ):upward(4)
 
-! ********** ADVERTISEMENTS **********
-! Sponsored Content - Multiple Detection Methods
+! "Suggested For You" Posts
 facebook.com##[role="article"]:has(
-    span:has-text(/Sponsored|Patrocinado|Sponsorisé/i),
-    [href*="/ads/"],
-    span:has-text(/Promoted|Promovido/i)
+    span:has-text(/^Suggested for you$|^Sugestões para você$/i)
 ):upward(4)
 
-! Feed Ads
-facebook.com##[data-pagelet*="FeedUnit"]:has(span:has-text(/Promoted|Promovido/i)):upward(3)
-
-! ********** LAYOUT CLEANUP **********
-! Empty Space Removal
-facebook.com##div[class*="empty"]:style(display: none !important)
-facebook.com##div:empty:style(display: none !important)
-
-! ********** MISC ELEMENTS **********
-! Notification Banners
-facebook.com##div[aria-label*="Notification"]:has-text(/Try|Experimente/i):upward(3)
-
-! Marketplace Promotions
-facebook.com##div[aria-label="Marketplace"] div:has-text(/Sponsored|Promoted/i)
+! ********** FEED PRESERVATION **********
+! Keep These To Maintain Normal Scrolling
+facebook.com##div[data-pagelet="Stories"] + div:style(margin-top: 0 !important)
+facebook.com##div[id^="feed"]:style(overflow-anchor: none !important)
