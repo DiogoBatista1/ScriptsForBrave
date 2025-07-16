@@ -6,10 +6,13 @@ facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Publicidade))
 facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has(span[dir="auto"]:has-text(Sponsored)))
 
 ! 🧹 Sponsored (fallback para palavras invisíveis ou espaçadas)
-facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored$/i))
-facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored · Paid for by/i))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Sponsored))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has(span:has-text(Sponsored)))
 facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/Sponsored/i))
-facebook.com##div:has-text(Sponsored)
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored · Paid for by/i))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored$/i))
+facebook.com##div:has(span:has-text(Sponsored))
+
 
 ! 👥 Remover posts sugeridos
 facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Sugerido para você))
@@ -33,3 +36,4 @@ facebook.com##div:has(span:has-text(People You May Know))
 ! 📷 Remover stories (bolhas do topo)
 facebook.com##[aria-label="Stories"]
 facebook.com##div[aria-label="Stories"]
+
