@@ -1,0 +1,35 @@
+! 🧹 Remover posts patrocinados
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Sponsored))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Publicidade))
+
+! 🧹 Sponsored posts (detecção por texto visível)
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has(span[dir="auto"]:has-text(Sponsored)))
+
+! 🧹 Sponsored (fallback para palavras invisíveis ou espaçadas)
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored$/i))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/^Sponsored · Paid for by/i))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(div:has-text(/Sponsored/i))
+facebook.com##div:has-text(Sponsored)
+
+! 👥 Remover posts sugeridos
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Sugerido para você))
+facebook.com##div:has(span:has-text(Sugerido))
+facebook.com##div[data-pagelet^="FeedUnit_"]:has(span:has-text(Suggested for you))
+facebook.com##div:has(span:has-text(Suggested))
+
+! 🎥 Remover vídeos, reels e watch
+facebook.com##div[aria-label="Reels"]
+facebook.com##div[aria-label="Watch"]
+facebook.com##div[aria-label="Vídeos"]
+facebook.com##div[aria-label="Videos"]
+facebook.com##a[href^="/reel/"]
+facebook.com##a[href^="/watch/"]
+facebook.com##[data-pagelet^="FeedUnit_"] div:has(a[href*="/reel/"])
+
+! 🧍‍♂️ Pessoas que talvez conheça
+facebook.com##div:has(span:has-text(Pessoas que talvez conheça))
+facebook.com##div:has(span:has-text(People You May Know))
+
+! 📷 Remover stories (bolhas do topo)
+facebook.com##[aria-label="Stories"]
+facebook.com##div[aria-label="Stories"]
