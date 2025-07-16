@@ -10,6 +10,9 @@ facebook.com##[aria-label="Reels"], [aria-label="Reel"]
 facebook.com##div[aria-label*="reel" i], div[aria-label*="short" i]
 facebook.com##div[data-pagelet*="VideoFeed"], div[data-pagelet*="Reels"]
 
+! Reels and short videos (English UI)
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Reels"]):style(height: 0 !important; overflow: hidden !important;)
+
 ! Mobile Reels Containers
 m.facebook.com##section[data-sigil*="reel"], div[data-sigil*="reel"]
 m.facebook.com##div[data-store*="video"], div[data-store*="reel"]
