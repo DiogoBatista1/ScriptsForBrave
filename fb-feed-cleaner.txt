@@ -4,11 +4,33 @@ facebook.com##[data-pagelet="Stories"], [aria-label="Stories"]
 m.facebook.com##section[data-sigil="stories-container"]
 touch.facebook.com##div[data-sigil="stories-tray"]
 
-! Remove Reels/Shorts (Only Suggested Ones)
-facebook.com##[role="article"]:has(
+! ********** REMOVE ALL REELS/SHORTS **********
+! Desktop Reels (Multiple Detection Methods)
+facebook.com##[aria-label="Reels"], [aria-label="Reel"]
+facebook.com##div[aria-label*="reel" i], div[aria-label*="short" i]
+facebook.com##div[data-pagelet*="VideoFeed"], div[data-pagelet*="Reels"]
+
+! Mobile Reels Containers
+m.facebook.com##section[data-sigil*="reel"], div[data-sigil*="reel"]
+m.facebook.com##div[data-store*="video"], div[data-store*="reel"]
+
+! Reels in Stories
+facebook.com##div[data-pagelet="Stories"] [aria-label*="Reel"]
+
+! Reels Tab/Section
+facebook.com##a[href*="/reels/"]:upward(2)
+facebook.com##div[role="tab"]:has-text(/Reels|Shorts/i):upward(1)
+
+! Reels Suggested in Feed
+facebook.com##div[role="article"]:has(
     [aria-label*="Reel"],
-    span:has-text(/Suggested Reels|Reels sugeridos/i)
+    [aria-label*="Short"],
+    span:has-text(/Reels|Shorts|Vídeos curtos/i)
 ):upward(4)
+
+! ********** PRESERVE NORMAL FEED **********
+! Keep these to maintain feed functionality
+facebook.com##div[id^="feed"]:style(overflow-anchor: none !important)
 
 ! ********** SPONSORED CONTENT **********
 ! Sponsored Posts (Precise Targeting)
